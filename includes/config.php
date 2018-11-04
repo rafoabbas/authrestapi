@@ -1,8 +1,5 @@
 <?php
-/**
- * Created by Kubpro.com.
- * Devloper: Rauf Abbas
- * Date: 11/4/2018
- * Time: 3:21 AM
- * Website: Kubpro.com
- */
+define('DB_NAME','android');
+define('DB_USER','root');
+define('DB_PASSWORD','');
+define('DB_HOST','localhost');
