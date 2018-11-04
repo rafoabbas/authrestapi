@@ -9,6 +9,8 @@ if ($_GET['action']){
         case  "register":
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 if(
+
+
                     isset($_POST['username']) and
                     isset($_POST['email']) and
                     isset($_POST['password']))
@@ -45,6 +47,31 @@ if ($_GET['action']){
             break;
         case "login":
 
+            if($_SERVER['REQUEST_METHOD']=='POST'){
+                if(isset($_POST['username']) and isset($_POST['password'])){
+                    $db = new DbOperations();
+
+                    if($db->userLogin($_POST['username'], $_POST['password'])){
+                        $user = $db->getUserByUsername($_POST['username']);
+                        $response['error'] = false;
+                        $response['id'] = $user['id'];
+                        $response['email'] = $user['email'];
+                        $response['username'] = $user['username'];
+                    }else{
+                        $response['error'] = true;
+                        $response['message'] = "Invalid username or password";
+                    }
+
+                }else{
+                    $response['error'] = true;
+                    $response['message'] = "Required fields are missing";
+                }
+            }else{
+                $response['error'] = true;
+                $response['message'] = "Invalid Request";
+            }
+
+            echo json_encode($response);
             break;
         default:
 
