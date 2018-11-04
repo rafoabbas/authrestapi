@@ -1,3 +1,2 @@
 RewriteEngine On
-RewriteRule ^(d+)/? index.php?action=$1 [NC,L]
-RewriteEngine On
+RewriteRule ^api/([^/\.]+)?$ /api.php?action=$1 [NC,L]
