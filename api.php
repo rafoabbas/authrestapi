@@ -1,5 +1,7 @@
 <?php
 
-if ($_GET['']){
+if ($_GET['action']){
+    $action = $_GET['action'];
+
 
 }
